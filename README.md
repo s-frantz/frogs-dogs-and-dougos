@@ -1,2 +1,2 @@
 # frogs-dogs-and-dougos
-Provide automated feedback on Doug's easy runs via Strava API
+Provide automated feedback on Doug's easy runs
