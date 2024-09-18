@@ -1,2 +1,4 @@
 pip==24.2
 selenium==4.24.0
+python-dotenv==1.0.1
+webdriver-manager
