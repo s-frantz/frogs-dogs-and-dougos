@@ -70,9 +70,7 @@ def get_activity_info(activity):
     {
         "athlete": "First Last",
         "weekday": "Monday",
-        "miles": 8,
-        "dog_miles": 3,
-        "frog_miles": 5,
+        "miles": ["8:18", "7:15", "6:50", "6:45", "8:03"]
     }
     """
     # initialize dict
@@ -158,7 +156,7 @@ if __name__ == '__main__':
 
     else:
         driver = launch_selenium_driver()
-        log_in_to_strava()
+        #log_in_to_strava()
         
         activities = [
             '12429464990',

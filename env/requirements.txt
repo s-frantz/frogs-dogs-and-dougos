@@ -1,4 +1,7 @@
+# Python 3.9.5 [MSC v.1928 64 bit (AMD64)]
+
 pip==24.2
 selenium==4.24.0
 python-dotenv==1.0.1
-webdriver-manager
+webdriver-manager==4.0.2
+ipykernel==6.29.5
