@@ -58,16 +58,17 @@ def get_comment_from_milesplits(milesplits: list) -> str:
 
     # make a final comment on the ratio of dogs to frogs
     if milesplits_emojis.count(FROG) >= milesplits_emojis.count(DOG):
-        comment_list.append(f" -> today, you were a {FROG}")
+        comment_list.append(f" -> today you lived as a {FROG}")
         if m <= 0:
-            comment_list.append(f", but a strong {FROG}, negative splitting by {abs(round(m, 1))}s per mile")
-            comment_list.append(f". quite impressive, for a {FROG}")
+            comment_list.append(f", but negative split by {abs(round(m, 1))}s per mile")
+            comment_list.append(f". rather impressive, for a {FROG}")
         else:
-            comment_list.append(f", and you brought shame to your pond, positive splitting by {abs(round(m, 1))}s per mile")
+            comment_list.append(f", and positive split by {abs(round(m, 1))}s per mile.")
+            comment_list.append(" may future runs heal you, so help you dog.")
     else:
-        comment_list.append(f" -> today, you were a {DOG}")
+        comment_list.append(f" -> you have lived as a {DOG}")
         if m <= 0:
-            comment_list.append(f", and you brought honor to your pound, negative splitting by {abs(round(m, 1))}s per mile")
+            comment_list.append(f". your negative splits of {abs(round(m, 1))}s per mile bring honor to the pound. WWWWWOOOF!")
         else:
             comment_list.append(f", although as a dying {DOG}, you positive split by {abs(round(m, 1))}s per mile")        
 
