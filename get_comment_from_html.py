@@ -1,5 +1,5 @@
-from utils.get_milesplits_from_html import get_milesplits_from_html
-from utils.get_comment_from_milesplits import get_comment_from_milesplits
+from froggos.get_milesplits_from_html import get_milesplits_from_html
+from froggos.get_comment_from_milesplits import get_comment_from_milesplits
 
 
 if __name__ == '__main__':

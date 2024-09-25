@@ -9,7 +9,7 @@ from selenium.webdriver.chrome.service import Service
 from webdriver_manager.chrome import ChromeDriverManager
 
 sys.dont_write_bytecode = True
-from utils.get_activities_from_html import get_activities_from_html
+from froggos.get_activities_from_html import get_activities_from_html
 
 
 # urls
