@@ -1,5 +1,5 @@
-ACTIVITY_OPEN = '<a class="minimal" href="/activities/'
-ACTIVITY_CLOSE = '">'
+ACTIVITY_OPEN = '&quot;,&quot;id&quot;:&quot;'
+ACTIVITY_CLOSE = '&quot;,&quot;ownedByCurrentAthlete&quot;'
 
 
 def get_activities_from_html(html: str) -> list:
@@ -22,48 +22,4 @@ def get_activities_from_html(html: str) -> list:
     return activities
 
 
-if __name__ == '__main__':
-
-    # TEST
-
-    html = """
-
-<ul class="recent-activities">
-<li>
-<span class="app-icon-wrapper  "><span class="app-icon icon-run icon-dark icon-sm">Run</span></span>
-<a class="minimal" href="/activities/12429464990">Lunch Run</a>
-</li>
-<li>
-<span class="app-icon-wrapper  "><span class="app-icon icon-run icon-dark icon-sm">Run</span></span>
-<a class="minimal" href="/activities/12419842701">LR</a>
-</li>
-<li>
-<span class="app-icon-wrapper  "><span class="app-icon icon-run icon-dark icon-sm">Run</span></span>
-<a class="minimal" href="/activities/12410435514">W: 4 x 5min on / 1min off</a>
-</li>
-<li>
-<span class="app-icon-wrapper  "><span class="app-icon icon-run icon-dark icon-sm">Run</span></span>
-<a class="minimal" href="/activities/12402849066">Morning Run</a>
-</li>
-<li>
-<span class="app-icon-wrapper  "><span class="app-icon icon-run icon-dark icon-sm">Run</span></span>
-<a class="minimal" href="/activities/12402848492">Morning Run</a>
-</li>
-</ul>
-</div>
-<div class="promo col-md-4 border-left js-channel-footer-center">
-<h3 class="h4">Strava Stories</h3>
-
-"""
-
-    activities = [
-        '12429464990',
-        '12419842701',
-        '12410435514',
-        '12402849066',
-        '12402848492',
-    ]
-
-    assert get_activities_from_html(html) == activities, f"ribbit, test(s) failed"
-
-    print(f"bork, test(s) passed!")
+# NOTE - tested in production from athlete page, via `html = driver.page_source`
