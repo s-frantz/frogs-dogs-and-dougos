@@ -62,21 +62,18 @@ def shuffle_dict(d):
 def get_element(xpath):
     return driver.find_element(By.XPATH, xpath)
 
-def click_button(xpath):
-    driver.find_element(By.XPATH, xpath).click()
-
-def fill_input(xpath, text):
-    driver.find_element(By.XPATH, xpath).send_keys(text)
-
 def log_in_to_strava():
     random_sleep()
     driver.get(LOGIN_URL)
     random_sleep()
-    fill_input(USER_INPUT_XPATH, STRAVA_USER)
+    user_input_element = get_element(USER_INPUT_XPATH)
+    user_input_element.send_keys(STRAVA_USER)
     random_sleep()
-    fill_input(PASS_INPUT_XPATH, STRAVA_PASS)
+    pass_input_element = get_element(PASS_INPUT_XPATH)
+    pass_input_element.send_keys(STRAVA_PASS)
     random_sleep()
-    click_button(LOGIN_BUTTON_XPATH)
+    login_button_element = get_element(LOGIN_BUTTON_XPATH)
+    login_button_element.click()
 
 def get_athletes():
     """Read local athletes.yaml and return {athlete_name: athlete_id}"""
