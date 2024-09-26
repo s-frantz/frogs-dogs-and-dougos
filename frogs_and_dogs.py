@@ -59,22 +59,6 @@ def shuffle_dict(d):
     random.shuffle(items)
     return dict(items)
 
-def get_element(xpath):
-    return driver.find_element(By.XPATH, xpath)
-
-def log_in_to_strava():
-    random_sleep()
-    driver.get(LOGIN_URL)
-    random_sleep()
-    user_input_element = get_element(USER_INPUT_XPATH)
-    user_input_element.send_keys(STRAVA_USER)
-    random_sleep()
-    pass_input_element = get_element(PASS_INPUT_XPATH)
-    pass_input_element.send_keys(STRAVA_PASS)
-    random_sleep()
-    login_button_element = get_element(LOGIN_BUTTON_XPATH)
-    login_button_element.click()
-
 def get_athletes():
     """Read local athletes.yaml and return {athlete_name: athlete_id}"""
     with open(ATHLETES_YAML, "r") as f:
@@ -112,6 +96,22 @@ def write_complete_file(message: str):
     print(message)
     with open(complete_file_path, "w", encoding="utf-8") as f:
         f.write(message)
+
+def get_element(xpath):
+    return driver.find_element(By.XPATH, xpath)
+
+def log_in_to_strava():
+    random_sleep()
+    driver.get(LOGIN_URL)
+    random_sleep()
+    user_input_element = get_element(USER_INPUT_XPATH)
+    user_input_element.send_keys(STRAVA_USER)
+    random_sleep()
+    pass_input_element = get_element(PASS_INPUT_XPATH)
+    pass_input_element.send_keys(STRAVA_PASS)
+    random_sleep()
+    login_button_element = get_element(LOGIN_BUTTON_XPATH)
+    login_button_element.click()
 
 def get_athlete_activities():
 
@@ -184,6 +184,9 @@ if __name__ == "__main__":
 
     # get athletes from yaml
     athletes = get_athletes()
+
+    # log in to strava
+    log_in_to_strava()
 
     # iterate through athletes
     for athlete_name, athlete_id in shuffle_dict(athletes).items():
