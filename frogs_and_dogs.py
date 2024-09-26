@@ -46,9 +46,6 @@ load_dotenv(override=True)
 STRAVA_USER = os.getenv("STRAVA_USER")
 STRAVA_PASS = os.getenv("STRAVA_PASS")
 
-# launch driver
-driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
-
 
 def random_sleep(min=0.5, max=3.0):
     sleep_time = random.uniform(min, max)
@@ -185,6 +182,9 @@ if __name__ == "__main__":
     # get athletes from yaml
     athletes = get_athletes()
 
+    # launch driver
+    driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()))
+
     # log in to strava
     log_in_to_strava()
 
@@ -225,3 +225,6 @@ if __name__ == "__main__":
                 write_complete_file(comment)
             except Exception as e:
                 write_invalid_file(traceback.format_exc())
+
+    # if we aren't running in prod mode, keep the window open on script completion
+    if not PROD: input()
