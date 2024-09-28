@@ -1,5 +1,23 @@
+import random
+import yaml
+
+
 FROG = '🐸'
 DOG = '🐕'
+
+QUIPS_YAML = "quips.yaml"
+
+
+def get_quips():
+    """Read local qups.yaml and return {scenario 1: [quip1, quip2, ...]}"""
+    with open(QUIPS_YAML, "r", encoding="utf8") as f:
+        return yaml.safe_load(f)
+
+
+def random_quip(scenario):
+    quips = get_quips()
+    scenario_quips = quips[scenario]
+    return random.choice(scenario_quips)
 
 
 def _linreg(values):
@@ -58,19 +76,22 @@ def get_comment_from_milesplits(milesplits: list) -> str:
 
     # make a final comment on the ratio of dogs to frogs
     if milesplits_emojis.count(FROG) >= milesplits_emojis.count(DOG):
-        comment_list.append(f" -> today you lived as a {FROG}")
+
+        comment_list.append(f" -> {FROG} run, ")
         if m <= 0:
-            comment_list.append(f", but negative split by {abs(round(m, 1))}s per mile")
-            comment_list.append(f". rather impressive, for a {FROG}")
+            comment_list.append(f"sped up by {abs(round(m, 1))}s per mile. ")
+            comment_list.append(random_quip("scenario_3"))
         else:
-            comment_list.append(f", and positive split by {abs(round(m, 1))}s per mile.")
-            comment_list.append(" may future runs heal you, so help you dog.")
+            comment_list.append(f"died by {abs(round(m, 1))}s per mile. ")
+            comment_list.append(random_quip("scenario_4"))
     else:
-        comment_list.append(f" -> you have lived as a {DOG}")
+        comment_list.append(f" -> {DOG} run, ")
         if m <= 0:
-            comment_list.append(f". your negative splits of {abs(round(m, 1))}s per mile bring honor to the pound. WWWWWOOOF!")
+            comment_list.append(f"dropped {abs(round(m, 1))}s per mile. ")
+            comment_list.append(random_quip("scenario_1"))
         else:
-            comment_list.append(f", although as a dying {DOG}, you positive split by {abs(round(m, 1))}s per mile")        
+            comment_list.append(f"pozzy split by {abs(round(m, 1))}s per mile. ")
+            comment_list.append(random_quip("scenario_2"))       
 
     # bundle up emojis and final comments
     final_comment = "".join(milesplits_emojis + comment_list)
@@ -98,9 +119,11 @@ if __name__ == '__main__':
         "7:22",
     ]
 
+    print()
+
     print(get_comment_from_milesplits(milesplits))
 
-    print("")
+    print()
 
     milesplits = [
         "6:30",
@@ -111,3 +134,5 @@ if __name__ == '__main__':
     ]
 
     print(get_comment_from_milesplits(milesplits))
+
+    print()
