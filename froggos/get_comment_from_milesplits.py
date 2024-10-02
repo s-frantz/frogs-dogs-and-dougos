@@ -79,18 +79,18 @@ def get_comment_from_milesplits(milesplits: list) -> str:
 
         comment_list.append(f" -> {FROG} run, ")
         if m <= 0:
-            comment_list.append(f"sped up by {abs(round(m, 1))}s per mile. ")
+            comment_list.append(f"dropped {abs(round(m, 1))} seconds per mile. ")
             comment_list.append(random_quip("scenario_3"))
         else:
-            comment_list.append(f"died by {abs(round(m, 1))}s per mile. ")
+            comment_list.append(f"croaked by {abs(round(m, 1))} seconds per mile. ")
             comment_list.append(random_quip("scenario_4"))
     else:
         comment_list.append(f" -> {DOG} run, ")
         if m <= 0:
-            comment_list.append(f"dropped {abs(round(m, 1))}s per mile. ")
+            comment_list.append(f"shredded {abs(round(m, 1))} seconds per mile. ")
             comment_list.append(random_quip("scenario_1"))
         else:
-            comment_list.append(f"pozzy split by {abs(round(m, 1))}s per mile. ")
+            comment_list.append(f"pozzy split by {abs(round(m, 1))} seconds per mile. ")
             comment_list.append(random_quip("scenario_2"))       
 
     # bundle up emojis and final comments
